@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 import os
 
 # Base Directory
@@ -59,16 +60,12 @@ TEMPLATES = [
 # WSGI Application
 WSGI_APPLICATION = 'zoo_project.wsgi.application'
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'movie_booking_v85z',  # Database name
-        'USER': 'movie_booking_v85z_user',  # Database username
-        'PASSWORD': 'dhfaHaIRtLf8Wkpu00vHdBVuWXY4hnfr',  # Database password
-        'HOST': 'dpg-cua0khggph6c739sjk8g-a',  # Database host
-        'PORT': '5432',  # Database port
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+
 
 
 # Authentication Password Validators
