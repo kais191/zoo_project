@@ -1,16 +1,17 @@
 from pathlib import Path
+import os
 
 # Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret Key
-SECRET_KEY = 'your-secret-key'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'development-secret-key')  # Ensure to set this in production
 
 # Debug Mode
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 # Allowed Hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1').split()
 
 # Installed Applications
 INSTALLED_APPS = [
@@ -58,17 +59,17 @@ TEMPLATES = [
 # WSGI Application
 WSGI_APPLICATION = 'zoo_project.wsgi.application'
 
+# Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'movie_booking',  # Replace with your database name
-        'USER': 'postgres',  # Replace with your PostgreSQL username
-        'PASSWORD': 'dasyBen1',  # Replace with your PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',  # Default PostgreSQL port
+        'NAME': os.getenv('POSTGRES_DB', 'movie_booking'),  # Replace with your database name
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Replace with your PostgreSQL username
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'dasyBen1'),  # Replace with your PostgreSQL password
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),  # Default PostgreSQL port
     }
 }
-
 
 # Authentication Password Validators
 AUTH_PASSWORD_VALIDATORS = [
@@ -89,7 +90,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-
 # Default Primary Key Field Type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -97,8 +97,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'  # Redirect after successful login (e.g., home page)
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout (e.g., home page)
 
-
+# Custom User Model
 AUTH_USER_MODEL = 'blog.CustomUser'
 
+# Media Files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
