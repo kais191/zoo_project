@@ -1,0 +1,23 @@
+{% extends 'zoo/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+
+{% block title %}Add Comment{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Add Comment</h2>
+    <div class="card shadow-sm p-4">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="content" class="form-label fw-bold">Your Comment</label>
+                {{ form.content|addclass:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Post Comment</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

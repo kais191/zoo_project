@@ -1,0 +1,90 @@
+{% extends 'zoo/base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<div class="container">
+    <!-- Profile Header -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Profile</h1>
+        <p class="text-muted">Manage your bookings and check the latest weather forecast.</p>
+    </div>
+
+    <!-- Bookings Section -->
+    <div class="row mb-5">
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Upcoming Bookings</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        {% for booking in upcoming_bookings %}
+                            <li class="mb-2">
+                                <i class="bi bi-calendar3 text-primary me-2"></i>
+                                {{ booking.date|date:"M j, Y" }} at {{ booking.time }}
+                            </li>
+                        {% empty %}
+                            <p class="text-muted">No upcoming bookings found.</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Past Bookings</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        {% for booking in past_bookings %}
+                            <li class="mb-2">
+                                <i class="bi bi-clock-history text-dark me-2"></i>
+                                {{ booking.date|date:"M j, Y" }} at {{ booking.time }}
+                            </li>
+                        {% empty %}
+                            <p class="text-muted">No past bookings found.</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Forecast Section -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Weather Forecast</h5>
+            <form method="get" class="d-flex align-items-center">
+                <input type="text" name="city" class="form-control form-control-sm me-2" placeholder="Enter your city" value="{{ city }}">
+                <button type="submit" class="btn btn-sm btn-light">Search</button>
+            </form>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Temperature</th>
+                        <th>Weather</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for day in weather_data %}
+                        <tr>
+                            <td>{{ day.date }}</td>
+                            <td>{{ day.temp }}°C</td>
+                            <td>{{ day.description }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center text-muted">No weather data available.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

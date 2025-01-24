@@ -1,0 +1,66 @@
+{% extends 'zoo/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Signup</h2>
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="bi bi-person-fill"></i>
+                                </span>
+                                {{ form.username|addclass:"form-control" }}
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="id_password1" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                                {{ form.password1|addclass:"form-control" }}
+                            </div>
+                            <small class="form-text text-muted">
+                                {% for error in form.password1.errors %}
+                                    {{ error }}<br>
+                                {% endfor %}
+                            </small>
+                        </div>
+
+                        <!-- Password Confirmation -->
+                        <div class="mb-3">
+                            <label for="id_password2" class="form-label">Password Confirmation</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="bi bi-shield-lock-fill"></i>
+                                </span>
+                                {{ form.password2|addclass:"form-control" }}
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Signup</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

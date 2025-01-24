@@ -1,0 +1,28 @@
+{% extends 'zoo/base.html' %}
+{% load custom_filters %}
+
+{% load static %}
+
+{% block title %}Add a New Post{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Add a New Post</h2>
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.title.label_tag }}
+                    {{ form.title|addclass:"form-control" }}
+                </div>
+                <div class="mb-3">
+                    {{ form.content.label_tag }}
+                    {{ form.content|addclass:"form-control" }}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Post</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

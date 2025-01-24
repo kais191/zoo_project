@@ -1,0 +1,38 @@
+/* Navbar Styling */
+.navbar-brand img {
+    height: 50px;
+}
+.navbar-brand span {
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.carousel img {
+    object-fit: cover;
+    height: 70vh;
+}
+
+/* Ticket Button */
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Card Section */
+.card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.card-title {
+    font-weight: bold;
+}

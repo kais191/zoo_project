@@ -1,0 +1,35 @@
+{% extends 'zoo/base.html' %}
+{% load static %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<h2>Reviews</h2>
+
+<!-- Add Review Form -->
+<h2>Add Review</h2>
+<form action="{% url 'add_review' %}" method="post" class="mb-3">
+    {% csrf_token %}
+    <textarea name="content" class="form-control mb-2" rows="3" placeholder="Write a review..."></textarea>
+    <button type="submit" class="btn btn-success">Post Review</button>
+</form>
+
+<!-- Display Reviews -->
+{% for review in reviews %}
+<div class="card my-3">
+    <div class="card-body">
+        <h5>{{ review.title }}</h5>
+        <p>{{ review.content }}</p>
+        <small>By {{ review.user.username }} | {{ review.created_at }}</small>
+
+        <!-- Likes -->
+        <form action="{% url 'like_review' review.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary btn-sm">
+                Like ({{ review.likes.count }})
+            </button>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

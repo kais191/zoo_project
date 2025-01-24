@@ -1,0 +1,44 @@
+{% extends 'zoo/base.html' %}
+{% load static %}
+
+{% block title %}Book Your Ticket{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Book Your Ticket</h2>
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                
+                <!-- Date Picker -->
+                <div class="mb-4">
+                    <label for="date" class="form-label">Date:</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-primary text-white">
+                            <i class="bi bi-calendar-event"></i>
+                        </span>
+                        <input type="date" id="date" name="date" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Time Picker -->
+                <div class="mb-4">
+                    <label for="time" class="form-label">Time:</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-primary text-white">
+                            <i class="bi bi-clock"></i>
+                        </span>
+                        <input type="time" id="time" name="time" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

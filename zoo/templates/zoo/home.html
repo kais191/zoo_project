@@ -1,0 +1,77 @@
+{% extends 'zoo/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<div id="heroCarousel" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/zoo1.jpg' %}" class="d-block w-100" alt="First Slide">
+            <div class="carousel-caption d-flex flex-column align-items-center bg-dark bg-opacity-50 rounded">
+                <h1 class="display-4 text-white">Explore Nature</h1>
+                <p class="lead">Experience the beauty of wildlife up close.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/zoo2.jpg' %}" class="d-block w-100" alt="Second Slide">
+            <div class="carousel-caption d-flex flex-column align-items-center bg-dark bg-opacity-50 rounded">
+                <h1 class="display-4 text-white">Meet the Animals</h1>
+                <p class="lead">Discover the amazing creatures that call our zoo home.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/zoo3.jpg' %}" class="d-block w-100" alt="Third Slide">
+            <div class="carousel-caption d-flex flex-column align-items-center bg-dark bg-opacity-50 rounded">
+                <h1 class="display-4 text-white">Plan Your Visit</h1>
+                <p class="lead">Create unforgettable memories with your family.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Ticket Section -->
+<section class="text-center mb-5">
+    <h2 class="fw-bold text-primary">Book Your Tickets</h2>
+    <p class="lead">Choose a date and time to visit our zoo.</p>
+    <a href="{% url 'book_ticket' %}" class="btn btn-lg btn-success shadow">Book Now</a>
+</section>
+
+<!-- About Zoo Section -->
+<section class="row g-4 text-center">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/zoo_animal.jpg' %}" class="card-img-top" alt="Animal">
+            <div class="card-body">
+                <h5 class="card-title">Animal Encounters</h5>
+                <p class="card-text">Meet our diverse range of animals up close.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/zoo_family.jpg' %}" class="card-img-top" alt="Family">
+            <div class="card-body">
+                <h5 class="card-title">Family Adventures</h5>
+                <p class="card-text">Fun-filled activities for all age groups.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/zoo_events.jpg' %}" class="card-img-top" alt="Events">
+            <div class="card-body">
+                <h5 class="card-title">Special Events</h5>
+                <p class="card-text">Attend seasonal events and exclusive shows.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
