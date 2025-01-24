@@ -99,6 +99,6 @@ LOGOUT_REDIRECT_URL = '/'  # Redirect after logout (e.g., home page)
 # Custom User Model
 AUTH_USER_MODEL = 'blog.CustomUser'
 
-MEDIA_URL = '/media/'  # Public URL for media files
-MEDIA_ROOT = '/opt/render/project/media'
 
+MEDIA_URL = '/media/'  # URL path for media files
+MEDIA_ROOT = '/media'  # Matches the mount path you just configured in Render
