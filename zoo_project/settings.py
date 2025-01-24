@@ -62,13 +62,14 @@ WSGI_APPLICATION = 'zoo_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'movie_booking'),  # Default to local DB name
-        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Default to PostgreSQL username
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),  # Use environment var
-        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),  # Use Render's internal host
-        'PORT': os.getenv('POSTGRES_PORT', '5432'),      # Default PostgreSQL port
+        'NAME': 'movie_booking_v85z',  # Database name
+        'USER': 'movie_booking_v85z_user',  # Database username
+        'PASSWORD': 'dhfaHaIRtLf8Wkpu00vHdBVuWXY4hnfr',  # Database password
+        'HOST': 'dpg-cua0khggph6c739sjk8g-a',  # Database host
+        'PORT': '5432',  # Database port
     }
 }
+
 
 # Authentication Password Validators
 AUTH_PASSWORD_VALIDATORS = [
@@ -99,6 +100,6 @@ LOGOUT_REDIRECT_URL = '/'  # Redirect after logout (e.g., home page)
 # Custom User Model
 AUTH_USER_MODEL = 'blog.CustomUser'
 
-
-MEDIA_URL = '/media/'  # URL path for media files
-MEDIA_ROOT = '/media'  # Matches the mount path you just configured in Render
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
