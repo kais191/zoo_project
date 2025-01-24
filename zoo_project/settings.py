@@ -99,6 +99,6 @@ LOGOUT_REDIRECT_URL = '/'  # Redirect after logout (e.g., home page)
 # Custom User Model
 AUTH_USER_MODEL = 'blog.CustomUser'
 
-# Media Files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'  # Public URL for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory where media files are stored
+
