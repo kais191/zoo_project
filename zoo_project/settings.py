@@ -59,15 +59,14 @@ TEMPLATES = [
 # WSGI Application
 WSGI_APPLICATION = 'zoo_project.wsgi.application'
 
-# Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'movie_booking'),  # Replace with your database name
-        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Replace with your PostgreSQL username
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'dasyBen1'),  # Replace with your PostgreSQL password
-        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-        'PORT': os.getenv('POSTGRES_PORT', '5432'),  # Default PostgreSQL port
+        'NAME': os.getenv('POSTGRES_DB', 'movie_booking'),  # Default to local DB name
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Default to PostgreSQL username
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),  # Use environment var
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),  # Use Render's internal host
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),      # Default PostgreSQL port
     }
 }
 
