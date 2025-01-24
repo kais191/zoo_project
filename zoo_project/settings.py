@@ -5,7 +5,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret Key
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'development-secret-key')  # Ensure to set this in production
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '7U1I8kpxUs3bMv7SPFZIgJQf29EXuZhDJgNY6lqMALcRU0OpzKMrrCpCWibFxTflG')
 
 # Debug Mode
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
