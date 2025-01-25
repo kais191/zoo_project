@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 import os
 
 # Base Directory
@@ -60,16 +61,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'zoo_project.wsgi.application'
 
 # Database Configuration
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'movie_booking'),  # Replace with your database name
-        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Replace with your PostgreSQL username
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'dasyBen1'),  # Replace with your PostgreSQL password
-        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-        'PORT': os.getenv('POSTGRES_PORT', '5432'),  # Default PostgreSQL port
-    }
-}
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config(
+    default=os.getenv('DATABASE_URL')
+)
+
+ALLOWED_HOSTS = ['*']
+
 
 # Authentication Password Validators
 AUTH_PASSWORD_VALIDATORS = [
