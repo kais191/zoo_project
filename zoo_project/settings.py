@@ -1,5 +1,4 @@
 from pathlib import Path
-import dj_database_url
 import os
 
 # Base Directory
@@ -29,6 +28,7 @@ INSTALLED_APPS = [
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,14 +61,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'zoo_project.wsgi.application'
 
 # Database Configuration
-import dj_database_url
-
-DATABASES['default'] = dj_database_url.config(
-    default=os.getenv('DATABASE_URL')
-)
-
-ALLOWED_HOSTS = ['*']
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'movie_booking'),  # Replace with your database name
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Replace with your PostgreSQL username
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'dasyBen1'),  # Replace with your PostgreSQL password
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),  # Default PostgreSQL port
+    }
+}
 
 # Authentication Password Validators
 AUTH_PASSWORD_VALIDATORS = [
